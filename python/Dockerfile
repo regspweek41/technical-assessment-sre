@@ -1,13 +1,18 @@
-# Dockerfile
-FROM python:3.11-slim
+fastapi
+uvicorn[standard]
+asyncpg
+prometheus-client
+pydantic
 
-WORKDIR /app
+# OpenTelemetry core
+opentelemetry-api
+opentelemetry-sdk
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# OpenTelemetry exporters
+opentelemetry-exporter-otlp
 
-COPY main.py .
-
-EXPOSE 8080
-
-CMD ["python", "main.py"]
+# OpenTelemetry instrumentations
+opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-asgi
+opentelemetry-instrumentation-asyncpg
+opentelemetry-instrumentation-logging
